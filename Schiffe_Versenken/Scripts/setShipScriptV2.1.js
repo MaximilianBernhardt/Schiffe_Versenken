@@ -12,8 +12,6 @@ var destroyer = 2;
 var submarine = 3;
 var dinghy = 4;
 
-// Hallo
-
 var isHorizontal = false;
 var countSubmarine = 0;
 var countDinghy = 0;
