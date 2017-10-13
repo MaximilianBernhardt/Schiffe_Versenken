@@ -1,6 +1,7 @@
 var shipSize;
 var shipSelection = false;
 var shipClass;
+var tmpShipClass;
 var row;
 
 var battleship = 1;
@@ -23,107 +24,151 @@ $(document).ready(function() {
     resetShipCounter();
 
     $(".btn_battleship").mousedown(function() {
-        countBattleship++;
-        if (countBattleship < 2) {
+        if (countBattleship < 1) {
             shipSelection = true;
             shipSize = 5;
             shipClass = "battleship";
+            tmpShipClass = "battleship";
             isHorizontal = false;
         }
     });
     $(".btn_cruiser").mousedown(function() {
-        countCruiser++;
-        if (countCruiser < 2) {
+        if (countCruiser < 1) {
             shipSelection = true;
             shipSize = 4;
             shipClass = "cruiser";
+            tmpShipClass = "cruiser";
             isHorizontal = false;
         }
     });
     $(".btn_destroyer").mousedown(function() {
-        countDestroyer++;
-        if (countDestroyer < 3) {
+        if (countDestroyer < 2) {
             shipSelection = true;
             shipSize = 3;
-            shipClass = "destroyer" + countDestroyer;
+            shipClass = "destroyer" + (countDestroyer+1);
+            tmpShipClass = "destroyer" + (countDestroyer+1);
             isHorizontal = false;
         }
         // shipSetEvents();
     });
     $(".btn_submarine").mousedown(function() {
-        countSubmarine++;
-        if (countSubmarine < 4) {
+        if (countSubmarine < 3) {
             shipSelection = true;
             shipSize = 2;
-            shipClass = "submarine" + countSubmarine;
+            shipClass = "submarine" + (countSubmarine+1);
+            tmpShipClass = "submarine" + (countSubmarine+1);
             isHorizontal = false;
         }
     });
     $(".btn_dinghy").mousedown(function() {
-        countDinghy++;
-        if (countDinghy < 5) {
+        if (countDinghy < 4) {
             shipSelection = true;
             shipSize = 1;
-            shipClass = "dinghy" + countDinghy;
+            shipClass = "dinghy" + (countDinghy+1);
+            tmpShipClass = "dinghy" + (countDinghy+1);
             isHorizontal = false;
         }
     });
 
     $(document).on('mouseup', '#fieldTable', function() {
-            switch (shipClass) {
+            switch (tmpShipClass) {
                 case "battleship":
-                    if (countBattleship < 2) {
-                        $(".battleshipCounter").html(1 - countBattleship + "x");
+                    if (countBattleship < 1) {
+                        if(setCountShip("battleship")===true) {
+                            countBattleship++;
+                            $(".battleshipCounter").html(1 - countBattleship + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "cruiser":
-                    if (countCruiser < 2) {
-                        $(".cruiserCounter").html(1 - countCruiser + "x");
+                    if (countCruiser < 1) {
+                        if(setCountShip("cruiser")===true) {
+                            countCruiser++;
+                            $(".cruiserCounter").html(1 - countCruiser + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "destroyer1":
-                    if (countDestroyer < 3) {
-                        $(".destroyerCounter").html(2 - countDestroyer + "x");
+                    if (countDestroyer < 2) {
+                        if(setCountShip("destroyer1")===true) {
+                            countDestroyer++;
+                            $(".destroyerCounter").html(2 - countDestroyer + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "destroyer2":
-                    if (countDestroyer < 3) {
-                        $(".destroyerCounter").html(2 - countDestroyer + "x");
+                    if (countDestroyer < 2) {
+                        if(setCountShip("destroyer2")===true) {
+                            countDestroyer++;
+                            $(".destroyerCounter").html(2 - countDestroyer + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "submarine1":
-                    if (countSubmarine < 4) {
-                        $(".submarineCounter").html(3 - countSubmarine + "x");
+                    if (countSubmarine < 3) {
+                        if(setCountShip("submarine1")===true) {
+                            countSubmarine++;
+                            $(".submarineCounter").html(3 - countSubmarine + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "submarine2":
-                    if (countSubmarine < 4) {
-                        $(".submarineCounter").html(3 - countSubmarine + "x");
+                    if (countSubmarine < 3) {
+                        if(setCountShip(("submarine2"))===true) {
+                            countSubmarine++;
+                            $(".submarineCounter").html(3 - countSubmarine + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "submarine3":
-                    if (countSubmarine < 4) {
-                        $(".submarineCounter").html(3 - countSubmarine + "x");
+                    if (countSubmarine < 3) {
+                        if(setCountShip("submarine3")===true) {
+                            countSubmarine++;
+                            $(".submarineCounter").html(3 - countSubmarine + "x");
+                            tmpShipClass="";
+                        }
                     }
                     break;
                 case "dinghy1":
-                    if (countDinghy < 5) {
-                        $(".dinghyCounter").html(4 - countDinghy + "x");
+                    if (countDinghy < 4) {
+                        if(setCountShip("dinghy1")===true) {
+                            countDinghy++;
+                            $(".dinghyCounter").html(4 - countDinghy + "x");
+                            tmpShipClass="";
+                        }
                     }
                     break;
                 case "dinghy2":
-                    if (countDinghy < 5) {
-                        $(".dinghyCounter").html(4 - countDinghy + "x");
+                    if (countDinghy < 4) {
+                        if(setCountShip("dinghy2")===true) {
+                            countDinghy++;
+                            $(".dinghyCounter").html(4 - countDinghy + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "dinghy3":
-                    if (countDinghy < 5) {
-                        $(".dinghyCounter").html(4 - countDinghy + "x");
+                    if (countDinghy < 4) {
+                        if(setCountShip("dinghy3")===true) {
+                            countDinghy++;
+                            $(".dinghyCounter").html(4 - countDinghy + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
                 case "dinghy4":
-                    if (countDinghy < 5) {
-                        $(".dinghyCounter").html(4 - countDinghy + "x");
+                    if (countDinghy < 4) {
+                        if(setCountShip("dinghy4")===true) {
+                            countDinghy++;
+                            $(".dinghyCounter").html(4 - countDinghy + "x");
+                            tmpShipClass = "";
+                        }
                     }
                     break;
             }
@@ -381,7 +426,7 @@ function resetShipCounter() {
 //     });
 // }
 
-function shipColission(cellNb, shipEnd, row, shipClass) {
+function shipColissionHorizontal(cellNb, shipEnd, row, shipClass) {
     var countReturn = 0;
     for (var h = cellNb; h < shipEnd; h++) {
 
@@ -404,7 +449,7 @@ function shipColission(cellNb, shipEnd, row, shipClass) {
     }
 }
 
-function shipColissionHorizontal(fromRow, toRow, thisCellNb, shipClass, row) {
+function shipColissionVertical(fromRow, toRow, thisCellNb, shipClass, row) {
     var countReturn = 0;
     for (var h = fromRow; h < toRow; h++) {
 
@@ -505,7 +550,7 @@ function setShipVertical(tmp){
             var shipEnd = cellNb + shipSize;
 
 
-            if (shipColission(cellNb, shipEnd, row, shipClass) === true) {
+            if (shipColissionHorizontal(cellNb, shipEnd, row, shipClass) === true) {
 
                 $(".fieldPoint").removeClass(shipClass);
 
@@ -565,7 +610,7 @@ function setShipVertical(tmp){
 
             });
 
-            if (shipColissionHorizontal(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
+            if (shipColissionVertical(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
                 $(".fieldPoint").removeClass(shipClass);
 
                 for (var j = 0; j < counterShipCellsToSet; j++) {
@@ -575,3 +620,67 @@ function setShipVertical(tmp){
         }
     }
 }
+
+function setCountShip(ship) {
+    var checkFieldContent;
+    var counter = 0;
+    console.log("Schiffsname "+ship);
+    for(var i = 1; i<=15;i++){
+        for(var j = 1; j<=15;j++){
+            checkFieldContent = $(".section_myField_create").children("#fieldTable").children("#row"+i).children("#cell"+j).prop("className").substring(11);
+            console.log("Schiffsklasse: "+checkFieldContent);
+            if(checkFieldContent===ship){
+                counter++;
+            }
+        }
+    }
+    console.log(counter+" "+shipSize);
+    if(counter===shipSize){
+        return true;
+    } else{
+        return false;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
