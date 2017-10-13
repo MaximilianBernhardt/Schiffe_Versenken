@@ -496,22 +496,24 @@ function setShipHorizontal(tmp) {
     var shipCells = [];
 
     if (isHorizontal===false) {
-        $(".fieldPoint").removeClass(shipClass);
-
-
-        if (shipEnd < 17) {
-            for (var i = cellNb; i < shipEnd; i++) {
-                shipCells.push([rowNb, i]);
-            }
-        } else {
-            for (var i = cellNb; i > cellNb - shipSize; i--) {
-                shipCells.push([rowNb, i]);
+        if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true)
+        {
+            $(".fieldPoint").removeClass(shipClass);
+            if (shipEnd < 17) {
+                for (var i = cellNb; i < shipEnd; i++) {
+                    shipCells.push([rowNb, i]);
+                }
+            } else {
+                for (var i = cellNb; i > cellNb - shipSize; i--) {
+                    shipCells.push([rowNb, i]);
+                }
             }
         }
     } else {
-        $(".fieldPoint").removeClass(shipClass);
         shipEnd = rowNb + shipSize;
-
+        if(shipColissionVertical(rowNb, shipEnd, thisCellNb, shipClass, row)===true)
+        {
+            $(".fieldPoint").removeClass(shipClass);
             if (shipEnd < 17) {
                 for (var i = rowNb; i < shipEnd; i++) {
                     shipCells.push([i, cellNb]);
@@ -522,6 +524,7 @@ function setShipHorizontal(tmp) {
                     shipCells.push([i, cellNb]);
                 }
             }
+        }
     }
 
     $.each(shipCells, function(index, value) {
