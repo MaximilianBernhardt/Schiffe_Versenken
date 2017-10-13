@@ -10,8 +10,9 @@ var destroyer = 2;
 var submarine = 3;
 var dinghy = 4;
 
-var thisIsHorizontal = [false, false, false, false, false, false, false, false, false, false, false];
-var isHorizontal = false;
+var thisIsTurned = [false, false, false, false, false, false, false, false, false, false, false];
+var isTurned = false;
+var allowedTurn = false;
 
 var countBattleship = 0;
 var countCruiser = 0;
@@ -29,7 +30,7 @@ $(document).ready(function() {
             shipSize = 5;
             shipClass = "battleship";
             tmpShipClass = "battleship";
-            isHorizontal = false;
+            isTurned = false;
         }
     });
     $(".btn_cruiser").mousedown(function() {
@@ -38,7 +39,7 @@ $(document).ready(function() {
             shipSize = 4;
             shipClass = "cruiser";
             tmpShipClass = "cruiser";
-            isHorizontal = false;
+            isTurned = false;
         }
     });
     $(".btn_destroyer").mousedown(function() {
@@ -47,7 +48,7 @@ $(document).ready(function() {
             shipSize = 3;
             shipClass = "destroyer" + (countDestroyer+1);
             tmpShipClass = "destroyer" + (countDestroyer+1);
-            isHorizontal = false;
+            isTurned = false;
         }
         // shipSetEvents();
     });
@@ -57,7 +58,7 @@ $(document).ready(function() {
             shipSize = 2;
             shipClass = "submarine" + (countSubmarine+1);
             tmpShipClass = "submarine" + (countSubmarine+1);
-            isHorizontal = false;
+            isTurned = false;
         }
     });
     $(".btn_dinghy").mousedown(function() {
@@ -66,7 +67,7 @@ $(document).ready(function() {
             shipSize = 1;
             shipClass = "dinghy" + (countDinghy+1);
             tmpShipClass = "dinghy" + (countDinghy+1);
-            isHorizontal = false;
+            isTurned = false;
         }
     });
 
@@ -190,7 +191,7 @@ $(document).ready(function() {
         $(".fieldPoint").removeClass("dinghy2");
         $(".fieldPoint").removeClass("dinghy3");
         $(".fieldPoint").removeClass("dinghy4");
-        isHorizontal = false;
+        isTurned = false;
         countSubmarine = 0;
         countDinghy = 0;
         countDestroyer = 0;
@@ -217,191 +218,191 @@ $(document).ready(function() {
         shipSelection = true;
         shipSize = 5;
         shipClass = "battleship";
-        isHorizontal = thisIsHorizontal[0];
+        isTurned = thisIsTurned[0];
     });
     $(document).on('mousedown', '.cruiser', function() {
         shipSelection = true;
         shipSize = 4;
         shipClass = "cruiser";
-        isHorizontal = thisIsHorizontal[1];
+        isTurned = thisIsTurned[1];
     });
     $(document).on('mousedown', '.destroyer1', function() {
         shipSelection = true;
         shipSize = 3;
         shipClass = "destroyer1";
-        isHorizontal = thisIsHorizontal[2];
+        isTurned = thisIsTurned[2];
     });
     $(document).on('mousedown', '.destroyer2', function() {
         shipSelection = true;
         shipSize = 3;
         shipClass = "destroyer2";
-        isHorizontal = thisIsHorizontal[3];
+        isTurned = thisIsTurned[3];
     });
     $(document).on('mousedown', '.submarine1', function() {
         shipSelection = true;
         shipSize = 2;
         shipClass = "submarine1";
-        isHorizontal = thisIsHorizontal[4];
+        isTurned = thisIsTurned[4];
     });
     $(document).on('mousedown', '.submarine2', function() {
         shipSelection = true;
         shipSize = 2;
         shipClass = "submarine2";
-        isHorizontal = thisIsHorizontal[5];
+        isTurned = thisIsTurned[5];
     });
     $(document).on('mousedown', '.submarine3', function() {
         shipSelection = true;
         shipSize = 2;
         shipClass = "submarine3";
-        isHorizontal = thisIsHorizontal[6];
+        isTurned = thisIsTurned[6];
     });
     $(document).on('mousedown', '.dinghy1', function() {
         shipSelection = true;
         shipSize = 1;
         shipClass = "dinghy1";
-        isHorizontal = thisIsHorizontal[7];
+        isTurned = thisIsTurned[7];
     });
     $(document).on('mousedown', '.dinghy2', function() {
         shipSelection = true;
         shipSize = 1;
         shipClass = "dinghy2";
-        isHorizontal = thisIsHorizontal[8];
+        isTurned = thisIsTurned[8];
     });
 
     $(document).on('mousedown', '.dinghy3', function() {
         shipSelection = true;
         shipSize = 1;
         shipClass = "dinghy3";
-        isHorizontal = thisIsHorizontal[9];
+        isTurned = thisIsTurned[9];
     });
     $(document).on('mousedown', '.dinghy4', function() {
         shipSelection = true;
         shipSize = 1;
         shipClass = "dinghy4";
-        isHorizontal = thisIsHorizontal[10];
+        isTurned = thisIsTurned[10];
     });
 
 
     $(document).on('click', '.battleship', function() {
-        if(thisIsHorizontal[0]===false){
-            thisIsHorizontal[0]=true;
+        if(thisIsTurned[0]===false){
+            thisIsTurned[0]=true;
         }else{
-            thisIsHorizontal[0] = false;
+            thisIsTurned[0] = false;
         }
-        isHorizontal = thisIsHorizontal[0];
+        isTurned = thisIsTurned[0];
         shipSize = 5;
         shipClass = "battleship";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this), 0);
     });
     $(document).on('click', '.cruiser', function() {
-        if(thisIsHorizontal[1]===false){
-            thisIsHorizontal[1]=true;
+        if(thisIsTurned[1]===false){
+            thisIsTurned[1]=true;
         }else{
-            thisIsHorizontal[1] = false;
+            thisIsTurned[1] = false;
         }
-        isHorizontal = thisIsHorizontal[1];
+        isTurned = thisIsTurned[1];
         shipSize = 4;
         shipClass = "cruiser";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),1);
     });
     $(document).on('click', '.destroyer1', function() {
-        if(thisIsHorizontal[2]===false){
-            thisIsHorizontal[2]=true;
+        if(thisIsTurned[2]===false){
+            thisIsTurned[2]=true;
         }else{
-            thisIsHorizontal[2] = false;
+            thisIsTurned[2] = false;
         }
-        isHorizontal = thisIsHorizontal[2];
+        isTurned = thisIsTurned[2];
         shipSize = 3;
         shipClass = "destroyer1";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),2);
     });
     $(document).on('click', '.destroyer2', function() {
-        if(thisIsHorizontal[3]===false){
-            thisIsHorizontal[3]=true;
+        if(thisIsTurned[3]===false){
+            thisIsTurned[3]=true;
         }else{
-            thisIsHorizontal[3] = false;
+            thisIsTurned[3] = false;
         }
-        isHorizontal = thisIsHorizontal[3];
+        isTurned = thisIsTurned[3];
         shipSize = 3;
         shipClass = "destroyer2";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),3);
     });
     $(document).on('click', '.submarine1', function() {
-        if(thisIsHorizontal[4]===false){
-            thisIsHorizontal[4]=true;
+        if(thisIsTurned[4]===false){
+            thisIsTurned[4]=true;
         }else{
-            thisIsHorizontal[4] = false;
+            thisIsTurned[4] = false;
         }
-        isHorizontal = thisIsHorizontal[4];
+        isTurned = thisIsTurned[4];
         shipSize = 2;
         shipClass = "submarine1";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),4);
     });
     $(document).on('click', '.submarine2', function() {
-        if(thisIsHorizontal[5]===false){
-            thisIsHorizontal[5]=true;
+        if(thisIsTurned[5]===false){
+            thisIsTurned[5]=true;
         }else{
-            thisIsHorizontal[5] = false;
+            thisIsTurned[5] = false;
         }
-        isHorizontal = thisIsHorizontal[5];
+        isTurned = thisIsTurned[5];
         shipSize = 2;
         shipClass = "submarine2";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),5);
     });
     $(document).on('click', '.submarine3', function() {
-        if(thisIsHorizontal[6]===false){
-            thisIsHorizontal[6]=true;
+        if(thisIsTurned[6]===false){
+            thisIsTurned[6]=true;
         }else{
-            thisIsHorizontal[6] = false;
+            thisIsTurned[6] = false;
         }
-        isHorizontal = thisIsHorizontal[6];
+        isTurned = thisIsTurned[6];
         shipSize = 2;
         shipClass = "submarine3";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),6);
     });
     $(document).on('click', '.dinghy1', function() {
-        if(thisIsHorizontal[7]===false){
-            thisIsHorizontal[7]=true;
+        if(thisIsTurned[7]===false){
+            thisIsTurned[7]=true;
         }else{
-            thisIsHorizontal[7] = false;
+            thisIsTurned[7] = false;
         }
-        isHorizontal = thisIsHorizontal[7];
+        isTurned = thisIsTurned[7];
         shipSize = 1;
         shipClass = "dinghy1";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),7);
     });
     $(document).on('click', '.dinghy2', function() {
-        if(thisIsHorizontal[8]===false){
-            thisIsHorizontal[8]=true;
+        if(thisIsTurned[8]===false){
+            thisIsTurned[8]=true;
         }else{
-            thisIsHorizontal[8] = false;
+            thisIsTurned[8] = false;
         }
-        isHorizontal = thisIsHorizontal[8];
+        isTurned = thisIsTurned[8];
         shipSize = 1;
         shipClass = "dinghy2";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),8);
     });
     $(document).on('click', '.dinghy3', function() {
-        if(thisIsHorizontal[9]===false){
-            thisIsHorizontal[9]=true;
+        if(thisIsTurned[9]===false){
+            thisIsTurned[9]=true;
         }else{
-            thisIsHorizontal[9] = false;
+            thisIsTurned[9] = false;
         }
-        isHorizontal = thisIsHorizontal[9];
+        isTurned = thisIsTurned[9];
         shipSize = 1;
         shipClass = "dinghy3";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),9);
     });
     $(document).on('click', '.dinghy4', function() {
-        if(thisIsHorizontal[10]===false){
-            thisIsHorizontal[10]=true;
+        if(thisIsTurned[10]===false){
+            thisIsTurned[10]=true;
         }else{
-            thisIsHorizontal[10] = false;
+            thisIsTurned[10] = false;
         }
-        isHorizontal = thisIsHorizontal[10];
+        isTurned = thisIsTurned[10];
         shipSize = 1;
         shipClass = "dinghy4";
-        setShipHorizontal($(this));
+        setShipHorizontal($(this),10);
     });
 
     $(document).on('mouseenter', '.fieldPoint', function() {
@@ -434,7 +435,7 @@ function cleanEach() {
     var parentRow = "";
 }
 
-function setShipHorizontal(tmp) {
+function setShipHorizontal(tmp, i) {
 
     var cellName = tmp.prop('id');
     var cellNb = parseInt(cellName.substring(4, 6));
@@ -448,7 +449,7 @@ function setShipHorizontal(tmp) {
     shipEnd = cellNb + shipSize;
     var shipCells = [];
 
-    if (isHorizontal===false) {
+    if (isTurned===false) {
         if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true)
         {
             $(".fieldPoint").removeClass(shipClass);
@@ -461,10 +462,13 @@ function setShipHorizontal(tmp) {
                     shipCells.push([rowNb, i]);
                 }
             }
+            thisIsTurned[i] = false;
+        }else{
+            thisIsTurned[i] = true;
         }
     } else {
         shipEnd = rowNb + shipSize;
-        if(shipColissionVertical(rowNb, shipEnd, thisCellNb, shipClass, row)===true)
+        if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true)
         {
             $(".fieldPoint").removeClass(shipClass);
             if (shipEnd < 17) {
@@ -477,6 +481,9 @@ function setShipHorizontal(tmp) {
                     shipCells.push([i, cellNb]);
                 }
             }
+            thisIsTurned[i]=true;
+        }else{
+            thisIsTurned[i] = false;
         }
     }
 
@@ -492,15 +499,16 @@ function setShipHorizontal(tmp) {
         console.log(value);
         console.log("Übergebe ich: " + value[1]);
     });
+    isTurned = thisIsTurned[i];
 }
 
-function setShipVertical(tmp){
+function setShipVertical(tmp, i){
     var cellName = tmp.prop('id');
     var cellNb = parseInt(cellName.substring(4, 6));
     row = tmp.parent();
 
 
-    if (isHorizontal === false) {
+    if (isTurned === false) {
         if (shipSelection === true) {
 
             var shipEnd = cellNb + shipSize;
