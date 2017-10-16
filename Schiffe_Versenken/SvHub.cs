@@ -199,10 +199,17 @@ namespace Schiffe_Versenken
         {
             using (getDbkConnection())
             {
-                ArrayList name = database.selectPlayerFromMatch(matchID);
-                Clients.All.receive("x" + name[0]);
-                Clients.All.receive("x" + name[1]);
-                name.Clear();
+                try
+                {
+                    ArrayList name = database.selectPlayerFromMatch(matchID);
+                    Clients.All.receive("x" + name[0]);
+                    Clients.All.receive("x" + name[1]);
+                    name.Clear();
+                }
+                catch (Exception e)
+                { 
+                    Console.Write("MatchID Error:" + e);
+                }
             }
         }
         public void playerStarted()
