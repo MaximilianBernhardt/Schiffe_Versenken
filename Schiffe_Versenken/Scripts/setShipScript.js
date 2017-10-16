@@ -450,7 +450,7 @@ function setShipHorizontal(tmp, i) {
     var shipCells = [];
 
     if (isTurned===false) {
-        if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true)
+        if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true && shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass)===true)
         {
             $(".fieldPoint").removeClass(shipClass);
             if (shipEnd < 17) {
@@ -468,7 +468,7 @@ function setShipHorizontal(tmp, i) {
         }
     } else {
         shipEnd = rowNb + shipSize;
-        if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true)
+        if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true && shipColissionVerticalNeg(rowNb, shipEnd, cellNb, shipClass, row)===true)
         {
             $(".fieldPoint").removeClass(shipClass);
             if (shipEnd < 17) {
@@ -506,41 +506,42 @@ function setShipVertical(tmp, i){
     var cellName = tmp.prop('id');
     var cellNb = parseInt(cellName.substring(4, 6));
     row = tmp.parent();
-
+    var rowName = tmp.parent().prop('id');
+    var rowNb = parseInt(rowName.substring(3, 5));
+    var shipEnd = 0;
+    var shipCells = [];
+    var shipCellsToSet = [];
+    var counterShipCellsToSet = 0;
+    var cell = [];
 
     if (isTurned === false) {
         if (shipSelection === true) {
 
-            var shipEnd = cellNb + shipSize;
-
-
-            if (shipColissionHorizontal(cellNb, shipEnd, row, shipClass) === true) {
-
-                $(".fieldPoint").removeClass(shipClass);
+            shipEnd = cellNb + shipSize;
 
                 if (shipEnd <= 16) {
-                    for (var i = cellNb; i < shipEnd; i++) {
-                        //row = $(this).parent();
-                        row.children("#cell" + i).addClass(shipClass);
-                    }
-                } else if (shipEnd > 16) {
-                    for (var i = cellNb; i > cellNb - shipSize; i--) {
-                        // row = $(this).parent();
-                        row.children("#cell" + i).addClass(shipClass);
+                    if (shipColissionHorizontal(cellNb, shipEnd, row, shipClass) === true) {
+                        $(".fieldPoint").removeClass(shipClass);
+                        for (var i = cellNb; i < shipEnd; i++) {
+                            //row = $(this).parent();
+                            row.children("#cell" + i).addClass(shipClass);
+                        }
                     }
                 }
-            }
+                if (shipEnd > 16) {
+                    if (shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) === true) {
+                        $(".fieldPoint").removeClass(shipClass);
+                        for (var i = cellNb; i > cellNb - shipSize; i--) {
+                            // row = $(this).parent();
+                            row.children("#cell" + i).addClass(shipClass);
+                        }
+                    }
+                }
+
         }
 
     } else {
         if (shipSelection === true) {
-            var rowName = tmp.parent().prop('id');
-            var rowNb = parseInt(rowName.substring(3, 5));
-            var shipEnd = null;
-            var shipCells = [];
-            var shipCellsToSet = [];
-            var counterShipCellsToSet = 0;
-            var cell = [];
 
             shipEnd = rowNb + shipSize;
 
@@ -574,7 +575,7 @@ function setShipVertical(tmp, i){
 
             });
 
-            if (shipColissionVertical(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
+            if (shipColissionVertical(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true && shipColissionVerticalNeg(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
                 $(".fieldPoint").removeClass(shipClass);
 
                 for (var j = 0; j < counterShipCellsToSet; j++) {
