@@ -72,8 +72,9 @@ function shipColissionVerticalNeg(fromRow, toRow, thisCellNb, shipClass, row) {
 }
 
 function shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) {
+    console.log("HIER");
     var countReturn = 0;
-    for (var h = cellNb; h < cellNb-shipSize; h--) {
+    for (var h = cellNb; h > cellNb-shipSize; h--) {
 
         //if (h > 15) { h = 15; }
 
