@@ -5,14 +5,14 @@ function shipColissionVertical(fromRow, toRow, thisCellNb, shipClass, row) {
 
         if (h > 15) { h = 15; }
 
-        var ifShip = row.parent().children("#row" + h).children("#cell" + thisCellNb).prop('className').substring(11);
-        console.log(ifShip);
+        var currentShipPoint = row.parent().children("#row" + h).children("#cell" + thisCellNb).prop('className').substring(11);
+        console.log(currentShipPoint);
 
-        if (ifShip !== shipClass && ifShip === "battleship" || ifShip !== shipClass && ifShip === "cruiser" || ifShip !==
-            shipClass && ifShip === "destroyer1" || ifShip !== shipClass && ifShip === "destroyer2" || ifShip !==
-            shipClass && ifShip === "submarine1" || ifShip !== shipClass && ifShip === "submarine2" || ifShip !==
-            shipClass && ifShip === "submarine3" || ifShip !== shipClass && ifShip === "dinghy1" || ifShip !== shipClass &&
-            ifShip === "dinghy2" || ifShip !== shipClass && ifShip === "dinghy3" || ifShip !== shipClass && ifShip ===
+        if (currentShipPoint !== shipClass && currentShipPoint === "battleship" || currentShipPoint !== shipClass && currentShipPoint === "cruiser" || currentShipPoint !==
+            shipClass && currentShipPoint === "destroyer1" || currentShipPoint !== shipClass && currentShipPoint === "destroyer2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine1" || currentShipPoint !== shipClass && currentShipPoint === "submarine2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine3" || currentShipPoint !== shipClass && currentShipPoint === "dinghy1" || currentShipPoint !== shipClass &&
+            currentShipPoint === "dinghy2" || currentShipPoint !== shipClass && currentShipPoint === "dinghy3" || currentShipPoint !== shipClass && currentShipPoint ===
             "dinghy4") {
             return false;
         } else {
@@ -30,13 +30,13 @@ function shipColissionHorizontal(cellNb, shipEnd, row, shipClass) { //shipColiss
 
         if (h > 15) { h = 15; }
 
-        var ifShip = row.children("#cell" + h).prop('className').substring(11);
-        console.log(ifShip);
-        if (ifShip !== shipClass && ifShip === "battleship" || ifShip !== shipClass && ifShip === "cruiser" || ifShip !==
-            shipClass && ifShip === "destroyer1" || ifShip !== shipClass && ifShip === "destroyer2" || ifShip !==
-            shipClass && ifShip === "submarine1" || ifShip !== shipClass && ifShip === "submarine2" || ifShip !==
-            shipClass && ifShip === "submarine3" || ifShip !== shipClass && ifShip === "dinghy1" || ifShip !== shipClass &&
-            ifShip === "dinghy2" || ifShip !== shipClass && ifShip === "dinghy3" || ifShip !== shipClass && ifShip ===
+        var currentShipPoint = row.children("#cell" + h).prop('className').substring(11);
+        console.log(currentShipPoint);
+        if (currentShipPoint !== shipClass && currentShipPoint === "battleship" || currentShipPoint !== shipClass && currentShipPoint === "cruiser" || currentShipPoint !==
+            shipClass && currentShipPoint === "destroyer1" || currentShipPoint !== shipClass && currentShipPoint === "destroyer2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine1" || currentShipPoint !== shipClass && currentShipPoint === "submarine2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine3" || currentShipPoint !== shipClass && currentShipPoint === "dinghy1" || currentShipPoint !== shipClass &&
+            currentShipPoint === "dinghy2" || currentShipPoint !== shipClass && currentShipPoint === "dinghy3" || currentShipPoint !== shipClass && currentShipPoint ===
             "dinghy4") {
             return false;
         } else {
@@ -53,14 +53,14 @@ function shipColissionVerticalNeg(fromRow, toRow, thisCellNb, shipClass, row) {
 
         //if (h > 15) { h = 15; }
 
-        var ifShip = row.parent().children("#row" + h).children("#cell" + thisCellNb).prop('className').substring(11);
-        console.log(ifShip);
+        var currentShipPoint = row.parent().children("#row" + h).children("#cell" + thisCellNb).prop('className').substring(11);
+        console.log(currentShipPoint);
 
-        if (ifShip !== shipClass && ifShip === "battleship" || ifShip !== shipClass && ifShip === "cruiser" || ifShip !==
-            shipClass && ifShip === "destroyer1" || ifShip !== shipClass && ifShip === "destroyer2" || ifShip !==
-            shipClass && ifShip === "submarine1" || ifShip !== shipClass && ifShip === "submarine2" || ifShip !==
-            shipClass && ifShip === "submarine3" || ifShip !== shipClass && ifShip === "dinghy1" || ifShip !== shipClass &&
-            ifShip === "dinghy2" || ifShip !== shipClass && ifShip === "dinghy3" || ifShip !== shipClass && ifShip ===
+        if (currentShipPoint !== shipClass && currentShipPoint === "battleship" || currentShipPoint !== shipClass && currentShipPoint === "cruiser" || currentShipPoint !==
+            shipClass && currentShipPoint === "destroyer1" || currentShipPoint !== shipClass && currentShipPoint === "destroyer2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine1" || currentShipPoint !== shipClass && currentShipPoint === "submarine2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine3" || currentShipPoint !== shipClass && currentShipPoint === "dinghy1" || currentShipPoint !== shipClass &&
+            currentShipPoint === "dinghy2" || currentShipPoint !== shipClass && currentShipPoint === "dinghy3" || currentShipPoint !== shipClass && currentShipPoint ===
             "dinghy4") {
             return false;
         } else {
@@ -77,13 +77,13 @@ function shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) {
 
         //if (h > 15) { h = 15; }
 
-        var ifShip = row.children("#cell" + h).prop('className').substring(11);
-        console.log(ifShip);
-        if (ifShip !== shipClass && ifShip === "battleship" || ifShip !== shipClass && ifShip === "cruiser" || ifShip !==
-            shipClass && ifShip === "destroyer1" || ifShip !== shipClass && ifShip === "destroyer2" || ifShip !==
-            shipClass && ifShip === "submarine1" || ifShip !== shipClass && ifShip === "submarine2" || ifShip !==
-            shipClass && ifShip === "submarine3" || ifShip !== shipClass && ifShip === "dinghy1" || ifShip !== shipClass &&
-            ifShip === "dinghy2" || ifShip !== shipClass && ifShip === "dinghy3" || ifShip !== shipClass && ifShip ===
+        var currentShipPoint = row.children("#cell" + h).prop('className').substring(11);
+        console.log(currentShipPoint);
+        if (currentShipPoint !== shipClass && currentShipPoint === "battleship" || currentShipPoint !== shipClass && currentShipPoint === "cruiser" || currentShipPoint !==
+            shipClass && currentShipPoint === "destroyer1" || currentShipPoint !== shipClass && currentShipPoint === "destroyer2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine1" || currentShipPoint !== shipClass && currentShipPoint === "submarine2" || currentShipPoint !==
+            shipClass && currentShipPoint === "submarine3" || currentShipPoint !== shipClass && currentShipPoint === "dinghy1" || currentShipPoint !== shipClass &&
+            currentShipPoint === "dinghy2" || currentShipPoint !== shipClass && currentShipPoint === "dinghy3" || currentShipPoint !== shipClass && currentShipPoint ===
             "dinghy4") {
             return false;
         } else {
