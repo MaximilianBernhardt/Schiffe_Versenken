@@ -1,15 +1,20 @@
 function generateEnemyField(size) {
+    var row;
+    var rowID;
+    var cell;
+    var cellID;
+
     size++;
     for (var i = 1; i < size; i++) {
-        var row=$("<tr></tr>");
-        var rowId="row"+i;
-        row.attr("id",rowId);
+        row=$("<tr></tr>");
+        rowID="row"+i;
+        row.attr("id",rowID);
         $("#fieldTableEnemy").append(row);
 
         for (var j = 1; j < size; j++) {
-            var cell=$("<td></td>");
+            cell=$("<td></td>");
             cell.addClass("coordinate");
-            var cellID="cell"+j;
+            cellID="cell"+j;
             cell.attr("id",cellID);
             $(row).append(cell);
         }
@@ -18,18 +23,23 @@ function generateEnemyField(size) {
 }
 
 function generateMyField(size) {
+    var row;
+    var rowID;
+    var cell;
+    var cellID;
+
     size++;
     $.connection.hub.start().done(function () {
         for (var i = 1; i < size; i++) {
-            var row = $("<tr></tr>");
-            var rowId = "row" + i;
-            row.attr("id", rowId);
+            row = $("<tr></tr>");
+            rowID = "row" + i;
+            row.attr("id", rowID);
             $("#fieldTableMy").append(row);
 
             for (var j = 1; j < size; j++) {
-                var cell = $("<td></td>");
+                cell = $("<td></td>");
                 cell.addClass("coordinateUntouchable");
-                var cellID = "cell" + j;
+                cellID = "cell" + j;
                 cell.attr("id", cellID);
                 $(row).append(cell);
 
@@ -50,19 +60,24 @@ function generateMyField(size) {
 }
 
 function generateField(size) {
+    var row;
+    var rowID;
+    var cell;
+    var cellID;
+
     size++;
     $(".section_myField, .section_myField_create").append("<table id='fieldTable'></table>");
     for (var i = 1; i < size; i++) {
-        var row=$("<tr></tr>");
+        row=$("<tr></tr>");
         //row.addClass("");
-        var rowId="row"+i;
-        row.attr("id",rowId);
+        rowID="row"+i;
+        row.attr("id",rowID);
         $("#fieldTable").append(row);
 
         for (var j = 1; j < size; j++) {
-            var cell=$("<td></td>");
+            cell=$("<td></td>");
             cell.addClass("fieldPoint");
-            var cellID="cell"+j;
+            cellID="cell"+j;
             cell.attr("id",cellID);
             $(row).append(cell);
         }

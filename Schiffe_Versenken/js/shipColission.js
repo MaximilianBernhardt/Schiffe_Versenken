@@ -3,7 +3,9 @@ function shipColissionVertical(fromRow, toRow, thisCellNb, shipClass, row) {
     var countReturn = 0;
     for (var h = fromRow; h < toRow; h++) {
 
-        if (h > 15) { h = 15; }
+        if (h > 15) {
+            h = 15;
+        }
 
         var currentShipPoint = row.parent().children("#row" + h).children("#cell" + thisCellNb).prop('className').substring(11);
         console.log(currentShipPoint);
@@ -17,7 +19,9 @@ function shipColissionVertical(fromRow, toRow, thisCellNb, shipClass, row) {
             return false;
         } else {
             countReturn++;
-            if (countReturn === toRow - fromRow) { return true; }
+            if (countReturn === toRow - fromRow) {
+                return true;
+            }
 
         }
     }
@@ -28,7 +32,9 @@ function shipColissionHorizontal(cellNb, shipEnd, row, shipClass) { //shipColiss
     var countReturn = 0;
     for (var h = cellNb; h < shipEnd; h++) {
 
-        if (h > 15) { h = 15; }
+        if (h > 15) {
+            h = 15;
+        }
 
         var currentShipPoint = row.children("#cell" + h).prop('className').substring(11);
         console.log(currentShipPoint);
@@ -41,8 +47,9 @@ function shipColissionHorizontal(cellNb, shipEnd, row, shipClass) { //shipColiss
             return false;
         } else {
             countReturn++;
-            if (countReturn === shipEnd - cellNb) { return true; }
-
+            if (countReturn === shipEnd - cellNb) {
+                return true;
+            }
         }
     }
 }
@@ -65,14 +72,15 @@ function shipColissionVerticalNeg(fromRow, toRow, thisCellNb, shipClass, row) {
             return false;
         } else {
             countReturn++;
-            if (countReturn === toRow - fromRow) { return true; }
+            if (countReturn === toRow - fromRow) {
+                return true;
+            }
 
         }
     }
 }
 
 function shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) {
-    console.log("HIER");
     var countReturn = 0;
     for (var h = cellNb; h > cellNb-shipSize; h--) {
 
@@ -89,8 +97,9 @@ function shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) {
             return false;
         } else {
             countReturn++;
-            if (countReturn === shipEnd - cellNb) { return true; }
-
+            if (countReturn === shipEnd - cellNb) {
+                return true;
+            }
         }
     }
 }

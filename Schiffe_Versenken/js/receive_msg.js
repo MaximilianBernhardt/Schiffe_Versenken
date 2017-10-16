@@ -3,7 +3,7 @@ function controlMsg() {
         $(".errorMsg").html("");
         $(".section_one").hide();
         $(".section_two").show();
-        if (typeof log[2] != 'undefined') {
+        if (typeof log[2] !== 'undefined') {
             playerID = parseInt(log[1]);
             $("#playerName").html(log[2]);
             $(".section_info").slideToggle("slow");
@@ -11,18 +11,18 @@ function controlMsg() {
             correntLogNumber = 0;
         }
     }
-    if (typeof log[0] != 'undefined' && log[0] === "false") {
+    if (typeof log[0] !== 'undefined' && log[0] === "false") {
         $("#errorMsg").html("Bitte Namen eingeben!");
         log = [];
         correntLogNumber = 0;
     }
-    if (typeof log[0] != 'undefined' && log[0].search("y") === 0) {
+    if (typeof log[0] !== 'undefined' && log[0].search("y") === 0) {
         matchID = parseInt(log[0].substring(1, 4));
         $("#conCode").html("Einladungs-Code: " + matchID);
         log = [];
         correntLogNumber = 0;
     }
-    if (typeof log[0] != 'undefined' && log[0] === "matchID_true") {
+    if (typeof log[0] !== 'undefined' && log[0] === "matchID_true") {
         $(".section_two").hide();
         $(".section_three").show();
         matchID = $("#matchID").val();
@@ -30,12 +30,12 @@ function controlMsg() {
         log = [];
         correntLogNumber = 0;
     }
-    if (typeof log[0] != 'undefined' && log[0] === "matchID_false") {
+    if (typeof log[0] !== 'undefined' && log[0] === "matchID_false") {
         log = [];
         correntLogNumber = 0;
     }
 
-    if (typeof log[0] != 'undefined' && log[0].search("x") === 0 && typeof log[1] != 'undefined' && log[1].search("x") === 0) {
+    if (typeof log[0] !== 'undefined' && log[0].search("x") === 0 && typeof log[1] !== 'undefined' && log[1].search("x") === 0) {
         $(".section_info").html(log[0].substring(1) + " vs. " + log[1].substring(1));
         $("#conCode").html("Lobby: " + matchID);
         console.log(matchID);
@@ -55,7 +55,7 @@ function controlMsg() {
         }
     }
 
-    if (typeof log[0] != 'undefined' && log[0]==="enemyReady") {
+    if (typeof log[0] !== 'undefined' && log[0]==="enemyReady") {
         checkEnemyReadyBtn = true;
         if (enemyConnection === true && checkEnemyReadyBtn === true && checkReadyBtn === true) {
             $(".section_four").hide();
@@ -64,7 +64,7 @@ function controlMsg() {
         log = [];
         correntLogNumber = 0;
     }
-    if (typeof log[0] != 'undefined' && log[0] === "startGame") {
+    if (typeof log[0] !== 'undefined' && log[0] === "startGame") {
         $(".section_info").html("Du bist dran!");
         // Hier wird gebastelt
         $(".coordinate").css({"background-color": "#137791"});
@@ -76,7 +76,7 @@ function controlMsg() {
         correntLogNumber = 0;
     }
 
-    if (typeof log[0] != 'undefined' && log[0] === "turn_t") {
+    if (typeof log[0] !== 'undefined' && log[0] === "turn_t") {
         $(".section_info").html("Du bist dran!");
         $(".coordinate").css({"background-color": "#137791"});
         $("#fieldTableEnemy").css({"border-style": "solid", "border-color": "green"});
@@ -86,7 +86,7 @@ function controlMsg() {
         correntLogNumber = 0;
     }
 
-    if(typeof log[0] != 'undefined' && log[0] === "hit"){
+    if(typeof log[0] !== 'undefined' && log[0] === "hit"){
         console.log(markedFieldPoint);
         markedFieldPoint.addClass("burnwater");
         countDestroyedShips++;
@@ -104,7 +104,7 @@ function controlMsg() {
         }
     }
 
-    if (typeof log[0] != 'undefined' && log[0] === "turn_f") {
+    if (typeof log[0] !== 'undefined' && log[0] === "turn_f") {
         $(".section_info").html("Dein Gegner ist dran!");
         // Hier wird gebastelt
         $(".coordinate").css({"background-color": "rgba(19, 119, 145,0.2)"});
@@ -116,13 +116,13 @@ function controlMsg() {
         correntLogNumber = 0;
     }
 
-    if(typeof log[0] != 'undefined' && log[0] === "failed"){
+    if(typeof log[0] !== 'undefined' && log[0] === "failed"){
         console.log(markedFieldPoint);
         markedFieldPoint.addClass("failedwater");
         log = [];
         correntLogNumber = 0;
     }
-    if(typeof log[0] != 'undefined' && log[0].search("winner")===0){
+    if(typeof log[0] !== 'undefined' && log[0].search("winner")===0){
         $("#winnerMsg").html("Der Gewinner ist "+log[0].substring(6));
         $("#winner").show();
         $(".section_five").hide();
@@ -131,12 +131,12 @@ function controlMsg() {
         correntLogNumber = 0;
     }
 
-    if(typeof log[0] != 'undefined'&& log[0].search("enemyHit_column")===0){
+    if(typeof log[0] !== 'undefined'&& log[0].search("enemyHit_column")===0){
         col = log[0].substring(15);
         log = [];
         correntLogNumber = 0;
     }
-    if(typeof log[0] != 'undefined'&& log[0].search("enemyHit_row")===0){
+    if(typeof log[0] !== 'undefined'&& log[0].search("enemyHit_row")===0){
         row = log[0].substring(12);
         $("#fieldTableMy").children("#row"+row).children("#cell"+col).addClass("hit");
         console.log($("#fieldTableMy").children("#row"+row).children("#cell"+col).attr('class'));
@@ -145,19 +145,19 @@ function controlMsg() {
         log = [];
         correntLogNumber = 0;
     }
-    if(typeof log[0] != 'undefined'&& log[0].search("enemyFailed_column")===0){
+    if(typeof log[0] !== 'undefined'&& log[0].search("enemyFailed_column")===0){
         col = log[0].substring(18);
         log = [];
         correntLogNumber = 0;
     }
-    if(typeof log[0] != 'undefined'&& log[0].search("enemyFailed_row")===0){
+    if(typeof log[0] !== 'undefined'&& log[0].search("enemyFailed_row")===0){
         row = log[0].substring(15);
         $("#fieldTableMy").children("#row"+row).children("#cell"+col).addClass("failed");
         console.log($("#fieldTableMy").children("#row"+row).children("#cell"+col).attr('class'));
         log = [];
         correntLogNumber = 0;
     }
-    if(typeof log[0] != 'undefined' && log[0].search("matchID_DontExist")===0){
+    if(typeof log[0] !== 'undefined' && log[0].search("matchID_DontExist")===0){
         $("#errorMatchID").html("Dieser Einladungscode existiert nicht!");
     }
 }

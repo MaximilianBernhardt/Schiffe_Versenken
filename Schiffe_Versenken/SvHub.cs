@@ -7,6 +7,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace Schiffe_Versenken
 {
+
     public class SvHub : Hub
     {
         dbk database = new dbk();

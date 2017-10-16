@@ -28,7 +28,7 @@ $(document).ready(function () {
             SVHUB.server.login(userName);
         });
         $("#userName").keydown(function (e) {
-            if (e.which == 13) {
+            if (e.which === 13) {
                 userName = $("#userName").val();
                 SVHUB.server.login(userName);
             }
@@ -72,8 +72,8 @@ $(document).ready(function () {
                         SVHUB.server.setFieldValues(playerID, "c"+j, i);
 
                         if(j===15) {
-                        console.log(shipSettings[i]);
-                    }
+                            console.log(shipSettings[i]);
+                        }
                     }else{
                         shipSettings[i].push("none");
                         if(j===15){
@@ -112,11 +112,13 @@ $(document).ready(function () {
         //Spielablauf!
 
         $(document).on('click','.coordinate',function () {
+            var cellNb;
+            var rowNb;
             if(myTurn===true){
                 markedFieldPoint = $(this);
                 console.log(markedFieldPoint);
-                var cellNb =$(this).prop("id").substring(4, 6);
-                var rowNb = parseInt($(this).parent().prop("id").substring(3, 5));
+                cellNb =$(this).prop("id").substring(4, 6);
+                rowNb = parseInt($(this).parent().prop("id").substring(3, 5));
                 SVHUB.server.changeFieldValues(enemyName,cellNb,rowNb);
             }
         });
