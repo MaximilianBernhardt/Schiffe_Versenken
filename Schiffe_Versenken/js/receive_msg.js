@@ -50,7 +50,7 @@ function controlMsg() {
         enemyConnection = true;
         if (playerStarted === true) {
             $.connection.hub.start().done(function () {
-                svHub.server.playerStarted();
+                SVHUB.server.playerStarted();
             });
         }
     }
@@ -96,8 +96,8 @@ function controlMsg() {
         correntLogNumber = 0;
         if(countDestroyedShips===25) {
             $.connection.hub.start().done(function () {
-                svHub.server.setWinner(matchID, userName);
-                svHub.server.removeField(15);
+                SVHUB.server.setWinner(matchID, userName);
+                SVHUB.server.removeField(15);
                 // $(".section_five").hide();
                 // $("#winner").show();
             });

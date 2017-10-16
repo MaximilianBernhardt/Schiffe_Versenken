@@ -1,6 +1,6 @@
 var log = [];
 
-var svHub = $.connection.svHub;
+var SVHUB = $.connection.svHub;
 
 var userName;
 var playerID;

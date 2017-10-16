@@ -15,7 +15,7 @@ $(document).ready(function () {
         location.reload();
     });
 
-    svHub.client.receive = function (message) {
+    SVHUB.client.receive = function (message) {
         log[correntLogNumber] = message;
         console.log(log[correntLogNumber]);
         correntLogNumber++;
@@ -25,28 +25,28 @@ $(document).ready(function () {
     $.connection.hub.start().done(function () {
         $("#submitName").click(function () {
             userName = $("#userName").val();
-            svHub.server.login(userName);
+            SVHUB.server.login(userName);
         });
         $("#userName").keydown(function (e) {
             if (e.which == 13) {
                 userName = $("#userName").val();
-                svHub.server.login(userName);
+                SVHUB.server.login(userName);
             }
         });
         $("#nextPage").click(function () {
             //deleteField();
             generateField($("#fieldSize").val());
             fieldSet = true;
-            svHub.server.createField(size, playerID);
+            SVHUB.server.createField(size, playerID);
             $(".section_myField_create").show();
             if($("#matchID").val()===""){
-                svHub.server.createGame($("#difficulty").val(), playerID, size);
+                SVHUB.server.createGame($("#difficulty").val(), playerID, size);
                 $(".section_two").hide();
                 $(".section_three").show();
                 $("#playerName").html(userName + ", setzte deine Schiffe!");
             } else{
-                svHub.server.getGame(parseInt($("#matchID").val()), playerID, $("#difficulty").val(), size);
-                svHub.server.getPlayerNameFromMatch(parseInt($("#matchID").val()));
+                SVHUB.server.getGame(parseInt($("#matchID").val()), playerID, $("#difficulty").val(), size);
+                SVHUB.server.getPlayerNameFromMatch(parseInt($("#matchID").val()));
             }
         });
         $("#btn_startgame").click(function () {
@@ -69,7 +69,7 @@ $(document).ready(function () {
                     {
                         shipCounter++;
                         shipSettings[i].push(checkFieldContent);
-                        svHub.server.setFieldValues(playerID, "c"+j, i);
+                        SVHUB.server.setFieldValues(playerID, "c"+j, i);
 
                         if(j===15) {
                         console.log(shipSettings[i]);
@@ -89,7 +89,7 @@ $(document).ready(function () {
                 $("#gameInfo").html("Einladungs-Code: "+matchID);
                 checkReadyBtn = true;
                 playerStarted = true;
-                svHub.server.playerStarted();
+                SVHUB.server.playerStarted();
             }else{
                 $("#errorShips").html("Setze alle Schiffe");
             }
@@ -104,7 +104,7 @@ $(document).ready(function () {
                 // ende vom basteln
                 $("#fieldTableEnemy").css({"border-style": "solid", "border-color": "red"});
                 $(".section_myField").css({"border-style": "solid", "border-color": "green"});
-                svHub.server.startGame();
+                SVHUB.server.startGame();
             }
         });
 
@@ -117,7 +117,7 @@ $(document).ready(function () {
                 console.log(markedFieldPoint);
                 var cellNb =$(this).prop("id").substring(4, 6);
                 var rowNb = parseInt($(this).parent().prop("id").substring(3, 5));
-                svHub.server.changeFieldValues(enemyName,cellNb,rowNb);
+                SVHUB.server.changeFieldValues(enemyName,cellNb,rowNb);
             }
         });
 

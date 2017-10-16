@@ -563,6 +563,7 @@ function setShipVertical(tmp, i){
                 for (var i = rowNb; i < shipEnd; i++) {
                     shipCells.push([i, cellNb]);
                 }
+
             }
             if (shipEnd >= 17) {
                 for (var i = rowNb; i > rowNb - shipSize; i--) {
@@ -586,11 +587,13 @@ function setShipVertical(tmp, i){
 
             });
 
+            if (shipColissionVertical(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
                 $(".fieldPoint").removeClass(shipClass);
 
                 for (var j = 0; j < counterShipCellsToSet; j++) {
                     $(cell[j]).addClass(shipClass);
                 }
+            }
         }
     }
 }
