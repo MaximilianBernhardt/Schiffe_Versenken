@@ -450,42 +450,53 @@ function setShipHorizontal(tmp, i) {
     var shipCells = [];
 
     if (isTurned===false) {
-        if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true && shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass)===true)
-        {
-            $(".fieldPoint").removeClass(shipClass);
             if (shipEnd < 17) {
-                for (var i = cellNb; i < shipEnd; i++) {
-                    shipCells.push([rowNb, i]);
-                }
-            } else {
-                for (var i = cellNb; i > cellNb - shipSize; i--) {
-                    shipCells.push([rowNb, i]);
-                }
-            }
-            thisIsTurned[i] = false;
-        }else{
-            thisIsTurned[i] = true;
-        }
-    } else {
-        shipEnd = rowNb + shipSize;
-        if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true && shipColissionVerticalNeg(rowNb, shipEnd, cellNb, shipClass, row)===true)
-        {
-            $(".fieldPoint").removeClass(shipClass);
-            if (shipEnd < 17) {
-                for (var i = rowNb; i < shipEnd; i++) {
-                    shipCells.push([i, cellNb]);
+                if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    thisIsTurned[i] = false;
+                    for (var i = cellNb; i < shipEnd; i++) {
+                        shipCells.push([rowNb, i]);
+                    }
+                }else{
+                    thisIsTurned[i] = true;
                 }
             }
             if (shipEnd >= 17) {
-                for (var i = rowNb; i > rowNb - shipSize; i--) {
-                    shipCells.push([i, cellNb]);
+                if(shipColissionHorizontal(cellNb, shipEnd, row, shipClass)===true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    thisIsTurned[i] = false;
+                    for (var i = cellNb; i > cellNb - shipSize; i--) {
+                        shipCells.push([rowNb, i]);
+                    }
+                }else{
+                    thisIsTurned[i] = true;
                 }
             }
-            thisIsTurned[i]=true;
-        }else{
-            thisIsTurned[i] = false;
+    } else {
+        shipEnd = rowNb + shipSize;
+            if (shipEnd < 17) {
+                if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    thisIsTurned[i]=true;
+                    for (var i = rowNb; i < shipEnd; i++) {
+                        shipCells.push([i, cellNb]);
+                    }
+                }else{
+                    thisIsTurned[i] = false;
+                }
+            }
+            if (shipEnd >= 17) {
+                if(shipColissionVertical(rowNb, shipEnd, cellNb, shipClass, row)===true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    thisIsTurned[i]=true;
+                    for (var i = rowNb; i > rowNb - shipSize; i--) {
+                        shipCells.push([i, cellNb]);
+                    }
+                }else{
+                    thisIsTurned[i] = false;
+                }
+            }
         }
-    }
 
     $.each(shipCells, function(index, value) {
 
@@ -500,7 +511,8 @@ function setShipHorizontal(tmp, i) {
         console.log("Übergebe ich: " + value[1]);
     });
     isTurned = thisIsTurned[i];
-}
+    }
+
 
 function setShipVertical(tmp, i){
     var cellName = tmp.prop('id');
@@ -519,24 +531,24 @@ function setShipVertical(tmp, i){
 
             shipEnd = cellNb + shipSize;
 
-                if (shipEnd <= 16) {
-                    if (shipColissionHorizontal(cellNb, shipEnd, row, shipClass) === true) {
-                        $(".fieldPoint").removeClass(shipClass);
-                        for (var i = cellNb; i < shipEnd; i++) {
-                            //row = $(this).parent();
-                            row.children("#cell" + i).addClass(shipClass);
-                        }
+            if (shipEnd <= 16) {
+                if (shipColissionHorizontal(cellNb, shipEnd, row, shipClass) === true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    for (var i = cellNb; i < shipEnd; i++) {
+                        //row = $(this).parent();
+                        row.children("#cell" + i).addClass(shipClass);
                     }
                 }
-                if (shipEnd > 16) {
-                    if (shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) === true) {
-                        $(".fieldPoint").removeClass(shipClass);
-                        for (var i = cellNb; i > cellNb - shipSize; i--) {
-                            // row = $(this).parent();
-                            row.children("#cell" + i).addClass(shipClass);
-                        }
+            }
+            if (shipEnd > 16) {
+                if (shipColissionHorizontalNeg(cellNb, shipEnd, row, shipClass) === true) {
+                    $(".fieldPoint").removeClass(shipClass);
+                    for (var i = cellNb; i > cellNb - shipSize; i--) {
+                        // row = $(this).parent();
+                        row.children("#cell" + i).addClass(shipClass);
                     }
                 }
+            }
 
         }
 
@@ -551,7 +563,6 @@ function setShipVertical(tmp, i){
                 for (var i = rowNb; i < shipEnd; i++) {
                     shipCells.push([i, cellNb]);
                 }
-
             }
             if (shipEnd >= 17) {
                 for (var i = rowNb; i > rowNb - shipSize; i--) {
@@ -575,13 +586,11 @@ function setShipVertical(tmp, i){
 
             });
 
-            if (shipColissionVertical(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true && shipColissionVerticalNeg(shipCellsToSet[0], shipEnd, thisCellNb, shipClass, row) === true) {
                 $(".fieldPoint").removeClass(shipClass);
 
                 for (var j = 0; j < counterShipCellsToSet; j++) {
                     $(cell[j]).addClass(shipClass);
                 }
-            }
         }
     }
 }
