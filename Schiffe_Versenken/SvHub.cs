@@ -209,6 +209,7 @@ namespace Schiffe_Versenken
                 catch (Exception e)
                 { 
                     Console.Write("MatchID Error:" + e);
+                    Clients.Caller.receive("matchID_DontExist");
                 }
             }
         }
