@@ -151,7 +151,7 @@ h2{
     margin-left: 5px;
     color: red;
 }
-#errorShips{
+#errorShips, #errorMatchID{
     color: red;
 }
 

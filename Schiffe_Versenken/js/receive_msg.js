@@ -157,4 +157,7 @@ function controlMsg() {
         log = [];
         correntLogNumber = 0;
     }
+    if(typeof log[0] != 'undefined' && log[0].search("matchID_DontExist")===0){
+        $("#errorMatchID").html("Dieser Einladungscode existiert nicht!");
+    }
 }
